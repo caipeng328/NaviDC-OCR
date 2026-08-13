@@ -37,7 +37,7 @@ These techniques enable NaviDC-OCR to achieve state-of-the-art performance on bo
 
 <div align="center">
 
-<img src="assets/score.png" width="100%">
+<img src="assets/score.png" width="80%">
 
 </div>
 
@@ -47,7 +47,7 @@ These techniques enable NaviDC-OCR to achieve state-of-the-art performance on bo
 
 <div align="center">
 
-<img src="assets/data_engine.png" width="100%">
+<img src="assets/data_engine.png" width="80%">
 
 </div>
 
@@ -66,7 +66,7 @@ No human annotation is required for most generated data.
 
 <div align="center">
 
-<img src="assets/model.png" width="100%">
+<img src="assets/model.png" width="80%">
 
 </div>
 
