@@ -149,7 +149,7 @@ NaviDC-OCR is trained in four stages.
 
 
 
-## ICDAR2026 Sci-ImageMiner
+## [ICDAR2026 Sci-ImageMiner](https://sites.google.com/view/sci-imageminer/)
 |     # | Team            |       RMS |      TEDS |  Weighted |
 | ----: | --------------- | --------: | --------: | --------: |
 | **1** | **NaviDC-OCR**  | **17.23** | **66.39** | **41.81** |
