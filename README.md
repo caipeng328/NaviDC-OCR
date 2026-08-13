@@ -1,6 +1,9 @@
-# NaviDC-OCR
-
 <div align="center">
+
+# <img src="assets/icon.png" height="64" /> NaviDC-OCR
+
+
+
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10+-green.svg)]()
