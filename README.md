@@ -3,11 +3,10 @@
 # <img src="assets/icon.png" height="64" /> NaviDC-OCR
 
 
-
-
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10+-green.svg)]()
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5+-red.svg)]()
+[📄 Technical Report](assets/NaviDC_OCR.pdf)
 
 **NaviDC-OCR: Navigating Document Parsing Across Digital and Camera-Captured Documents**
 
