@@ -82,7 +82,7 @@ NaviDC-OCR is trained in four stages.
 
 # Performance
 
-## OmniDocBench v1.6
+## [OmniDocBench v1.6](https://github.com/opendatalab/OmniDocBench)
 | Model Type | Methods | Param | Overall ↑ | Text Edit ↓ | Formula CDM ↑ | Table TEDS ↑ | Table TEDS-S ↑ | Read Order Edit ↓ |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
 | **Specialized VLMs** | **NaviDC-OCR** | **1.2B** | **96.87** | **0.027** | 96.36 | **97.05** | **98.52** | <u>0.122</u> |
@@ -111,7 +111,7 @@ NaviDC-OCR is trained in four stages.
 | | GPT-5.2 | -- | 86.52 | 0.114 | 88.00 | 82.95 | 87.93 | 0.193 |
 | | InternVL3.5-241B | 241B | 83.61 | 0.130 | 89.52 | 74.35 | 79.78 | 0.215 |
 
-## Wild OmniDocBench v1.5
+## [Wild_OmniDocBench](https://github.com/VirtualLUOUCAS/Wild_OmniDocBench) 
 | Model Type          | Methods           | Param |    Overall ↑ | Text Edit ↓ | Formula CDM ↑ | Table TEDS ↑ | Table TEDS-S ↑ | Read Order Edit ↓ |
 | ------------------- | ----------------- | ----: | -----------: | ----------: | ------------: | -----------: | -------------: | ----------------: |
 | **Decoupled VLMs**  | **NaviDC-OCR**    |  1.2B |    **88.53** |  **0.1173** |         88.26 |    **89.05** |      **92.14** |        **0.2011** |
@@ -126,7 +126,7 @@ NaviDC-OCR is trained in four stages.
 
 
 
-## PureDocBench
+## [PureDocBench](https://github.com/zhihengli-casia/puredocbench/)
 | Model Type         | Model             | Clean Overall ↑ | Clean Text ↓ | Clean Formula ↑ | Clean Table ↑ | Digital Degraded Overall ↑ | Digital Degraded Text ↓ | Digital Degraded Formula ↑ | Digital Degraded Table ↑ | Real Degraded Overall ↑ | Real Degraded Text ↓ | Real Degraded Formula ↑ | Real Degraded Table ↑ |
 | ------------------ | ----------------- | --------------: | -----------: | --------------: | ------------: | -------------------------: | ----------------------: | -------------------------: | -----------------------: | ----------------------: | -------------------: | ----------------------: | --------------------: |
 | **Decoupled VLM**  | **NaviDC-OCR**    |       **86.90** |    **0.111** |       **81.01** |     **91.09** |               <u>77.47</u> |                   0.206 |                  **72.59** |                    80.45 |               **70.85** |         <u>0.302</u> |               **65.11** |             **77.66** |
