@@ -4,7 +4,7 @@
 
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Technical Report](https://img.shields.io/badge/Technical%20Report-PDF-red.svg)](assets/NaviDC_OCR.pdf)
+[![Technical Report](https://img.shields.io/badge/Technical%20Report-PDF-red.svg)](https://arxiv.org/pdf/2608.12898)
 
 **NaviDC-OCR: Navigating Document Parsing Across Digital and Camera-Captured Documents**
 
