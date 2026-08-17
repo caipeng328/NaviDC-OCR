@@ -2,11 +2,13 @@
 
 # <img src="assets/icon.png" height="64" /> NaviDC-OCR
 
-
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Technical Report](https://img.shields.io/badge/Technical%20Report-PDF-red.svg)](https://arxiv.org/pdf/2608.12898)
-
 **NaviDC-OCR: Navigating Document Parsing Across Digital and Camera-Captured Documents**
+
+[![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
+[![Technical Report](https://img.shields.io/badge/Technical%20Report-arXiv-red.svg)](https://arxiv.org/pdf/2608.12898)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Model-orange.svg)](https://huggingface.co/StarDoc-AI/NaviDC-OCR)
+
+**A lightweight Vision-Language Model for unified document parsing across digital and camera-captured documents.**
 
 </div>
 
@@ -14,119 +16,209 @@
 
 ## 🔥 News
 
-- **2026/08** **NaviDC-OCR** weights & technical report are coming.
+- **2026/08/17** — NaviDC-OCR [model weights](https://huggingface.co/StarDoc-AI/NaviDC-OCR) and [technical report](https://arxiv.org/pdf/2608.12898) have been released.
 
 ---
 
-## Introduction
+## 📖 Introduction
 
-NaviDC-OCR is a lightweight (≈1B parameters), commercial-grade, open-source Vision-Language Model designed specifically for document understanding.
+**NaviDC-OCR** is a lightweight (~1.2B parameters), open-source Vision-Language Model designed specifically for document understanding.
 
-Unlike existing methods that mainly target either digital documents or camera-captured documents, NaviDC-OCR unifies both scenarios within a single framework.
+Unlike existing approaches that primarily focus on either **digital documents** or **camera-captured documents**, NaviDC-OCR provides a unified framework for both scenarios.
 
-Compared with previous document parsing models, NaviDC-OCR introduces
+NaviDC-OCR introduces the following key techniques:
 
-- Multi-node Consensus Voting (MCV) for automatic pseudo-label generation
-- Geometry-aware document modeling for camera-captured documents
-- Curvature-Guided Douglas-Peucker Sampling (CGDP)
-- Image-to-image self-verification for automatic data refinement
-- Progressive four-stage training pipeline
-- Content-Structure Decoupled Learning for tables and formulas
+- **Multi-node Consensus Voting (MCV)** for automatic pseudo-label generation
+- **Geometry-aware Document Modeling** for camera-captured documents
+- **Curvature-Guided Douglas-Peucker Sampling (CGDP)**
+- **Image-to-Image Self-Verification** for automatic data refinement
+- **Progressive Four-Stage Training** pipeline
+- **Content-Structure Decoupled Learning** for tables and formulas
 
-These techniques enable NaviDC-OCR to achieve state-of-the-art performance on both digital and camera-captured document benchmarks while remaining lightweight enough for practical deployment.
+These techniques enable NaviDC-OCR to achieve strong performance across both digital and camera-captured document benchmarks while maintaining a lightweight architecture suitable for practical deployment.
 
 <div align="center">
 
-<img src="assets/score.png" width="80%">
+<img src="assets/score.png" width="85%" alt="NaviDC-OCR benchmark results">
 
 </div>
 
 ---
 
-# Data Engine
+## ⚙️ Data Engine
 
 <div align="center">
 
-<img src="assets/data_engine.png" width="80%">
+<img src="assets/data_engine.png" width="85%" alt="NaviDC-OCR data engine">
 
 </div>
 
-Our automatic data engine contains
+NaviDC-OCR adopts an automated data engine consisting of four major components:
 
-- Multi-node Consensus Voting
-- Geometry-aware Data Synthesis
-- Image-to-Image Self Verification
-- Progressive Data Cleaning
+| Component | Description |
+|---|---|
+| **Multi-node Consensus Voting** | Generates reliable pseudo-labels from heterogeneous model predictions |
+| **Geometry-aware Data Synthesis** | Produces realistic camera-captured document samples |
+| **Image-to-Image Self-Verification** | Verifies model predictions through visual rendering |
+| **Progressive Data Cleaning** | Iteratively filters and refines training data |
 
-No human annotation is required for most generated data.
+Most of the generated training data requires **no manual annotation**.
 
 ---
 
-# Progressive Training
+## 🧠 Progressive Training
 
 <div align="center">
 
-<img src="assets/model.png" width="80%">
+<img src="assets/model.png" width="85%" alt="NaviDC-OCR training pipeline">
 
 </div>
 
-NaviDC-OCR is trained in four stages.
+NaviDC-OCR is trained through a progressive four-stage training pipeline:
 
 | Stage | Objective |
-|---------|-----------------------------|
-| Stage 1 | Vision-Language Alignment |
-| Stage 2 | Geometry-aware Document Parsing |
-| Stage 3 | Content-Structure Decoupled Learning |
-| Stage 4 | Reinforcement Learning |
+|---|---|
+| **Stage 1** | Vision-Language Alignment |
+| **Stage 2** | Geometry-aware Document Parsing |
+| **Stage 3** | Content-Structure Decoupled Learning |
+| **Stage 4** | Reinforcement Learning |
 
+This progressive strategy gradually improves the model from basic vision-language alignment to fine-grained document understanding and structured output generation.
 
-# Performance
+---
 
-## [OmniDocBench v1.6](https://github.com/opendatalab/OmniDocBench)
-| Model Type | Methods | Param | Overall ↑ | Text Edit ↓ | Formula CDM ↑ | Table TEDS ↑ | Table TEDS-S ↑ | Read Order Edit ↓ |
-|---|---|---:|---:|---:|---:|---:|---:|---:|
-| **Specialized VLMs** | **NaviDC-OCR** | **1.2B** | **96.87** | **0.027** | 96.36 | **97.05** | **98.52** | <u>0.122</u> |
-| | OvisOCR2 | 0.8B | <u>96.58</u> | <u>0.033</u> | **97.53** | <u>94.76</u> | <u>97.16</u> | **0.111** |
-| | PaddleOCR-VL-1.6 | 0.9B | 96.33 | 0.033 | <u>97.49</u> | <u>94.76</u> | 97.11 | 0.127 |
-| | MinerU2.5-Pro | 1.2B | 95.75 | 0.036 | 97.45 | 93.42 | 95.92 | 0.120 |
-| | GLM-OCR | 0.9B | 95.22 | 0.044 | 97.18 | 92.83 | 95.39 | 0.133 |
-| | PaddleOCR-VL-1.5 | 0.9B | 94.87 | 0.038 | 96.69 | 91.67 | 94.37 | 0.130 |
-| | HunyuanOCR-1.5 | 1B | 94.74 | 0.033 | 97.49 | 94.76 | 97.11 | 0.127 |
-| | PaddleOCR-VL | 0.9B | 94.11 | 0.040 | 95.70 | 90.65 | 93.74 | 0.135 |
-| | Youtu-Parsing | 2.5B | 93.68 | 0.044 | 93.45 | 92.02 | 95.00 | 0.116 |
-| | Logics-Parsing-v2 | 4B | 93.27 | 0.041 | 95.47 | 88.42 | 91.98 | 0.137 |
-| | FireRed-OCR | 2B | 93.20 | 0.037 | 95.27 | 88.04 | 91.06 | 0.131 |
-| | MinerU2.5 | 1.2B | 92.98 | 0.045 | 95.59 | 87.88 | 91.47 | 0.130 |
-| | OpenDoc-0.1B | 0.1B | 90.64 | 0.049 | 92.93 | 83.88 | 87.45 | 0.140 |
-| | dots.ocr | 3B | 90.50 | 0.048 | 89.12 | 87.18 | 90.58 | 0.138 |
-| | DeepSeek-OCR 2 | 3B | 90.17 | 0.050 | 91.59 | 83.89 | 87.75 | 0.144 |
-| | HunyuanOCR | 1B | 89.87 | 0.089 | 87.44 | 91.01 | 93.23 | 0.171 |
-| | Dolphin-v2 | 3B | 89.34 | 0.069 | 90.53 | 84.40 | 87.44 | 0.150 |
-| | OCRVerse | 4B | 88.44 | 0.063 | 89.14 | 82.44 | 86.27 | 0.163 |
-| | MonkeyOCR-pro-3B | 3B | 88.43 | 0.074 | 88.33 | 84.35 | 88.62 | 0.189 |
-| **General VLMs** | Ovis2.6-30B-A3B | 30B | 93.62 | 0.035 | 94.93 | 89.44 | 92.40 | 0.135 |
-| | Gemini 3 Pro | -- | 92.85 | 0.064 | 95.83 | 89.15 | 92.96 | 0.165 |
-| | Gemini 3 Flash | -- | 92.58 | 0.066 | 95.03 | 89.29 | 93.51 | 0.173 |
-| | Qwen3-VL-235B | 235B | 89.78 | 0.063 | 92.53 | 83.07 | 86.75 | 0.166 |
-| | GPT-5.2 | -- | 86.52 | 0.114 | 88.00 | 82.95 | 87.93 | 0.193 |
-| | InternVL3.5-241B | 241B | 83.61 | 0.130 | 89.52 | 74.35 | 79.78 | 0.215 |
+# 🚀 Installation & Usage
 
-## [Wild_OmniDocBench](https://github.com/VirtualLUOUCAS/Wild_OmniDocBench) 
-| Model Type          | Methods           | Param |    Overall ↑ | Text Edit ↓ | Formula CDM ↑ | Table TEDS ↑ | Table TEDS-S ↑ | Read Order Edit ↓ |
-| ------------------- | ----------------- | ----: | -----------: | ----------: | ------------: | -----------: | -------------: | ----------------: |
-| **Decoupled VLMs**  | **NaviDC-OCR**    |  1.2B |    **88.53** |  **0.1173** |         88.26 |    **89.05** |      **92.14** |        **0.2011** |
-|                     | PaddleOCR-VL-1.6  |  0.9B |        87.36 |      0.1369 |         88.42 | <u>85.76</u> |   <u>90.14</u> |            0.2057 |
-|                     | MinerU2.5-Pro     |  1.2B |        87.33 |      0.1362 |  <u>90.15</u> |        85.46 |          90.12 |     <u>0.2013</u> |
-|                     | GLM-OCR           |  0.9B |        85.08 |      0.1514 |         89.09 |        81.31 |          85.90 |            0.2228 |
-|                     | PaddleOCR-VL-1.5  |  0.9B |        84.64 |      0.1461 |         86.72 |        81.80 |          86.52 |            0.2138 |
-| **End-to-End VLMs** | OvisOCR2          |  0.8B | <u>87.91</u> |       0.129 |     **90.37** |        85.13 |          89.11 |            0.2021 |
-|                     | dots.ocr          |    3B |        81.84 |      0.1483 |          85.0 |        75.32 |          80.20 |            0.2200 |
-|                     | HunyuanOCR-1.5    |    1B |        77.62 |      0.1979 |         85.12 |        67.54 |          70.67 |            0.2750 |
-|                     | Logics-Parsing-v2 |    4B |        77.10 |      0.4029 |          91.4 |        80.19 |          87.16 |            0.2355 |
+## 1. Environment Installation
 
+NaviDC-OCR requires **Python 3.10+** and a CUDA-enabled environment for GPU inference.
 
+```bash
+git clone https://github.com/caipeng328/NaviDC-OCR.git
+cd NaviDC-OCR
+conda create -n navidc-ocr python=3.10 -y
+conda activate navidc-ocr
+```
 
-## [PureDocBench](https://github.com/zhihengli-casia/puredocbench/)
+### Install Dependencies
+
+Install NaviDC-OCR and its dependencies in editable mode:
+
+```bash
+pip install -e .
+```
+
+The `-e` option installs the project in **editable mode**, allowing modifications to the source code to take effect immediately without reinstalling the package.
+
+---
+
+## 2. Inference
+
+NaviDC-OCR provides `infer.py` for batch inference on document images.
+
+Before running inference, configure:
+
+* Input image directory
+* Output directory
+* Model path
+
+A typical inference command is:
+
+```bash
+#!/bin/bash
+set -e
+
+IMAGE_SUB_PATH="/path/to/input/images"
+RESULT_SAVE_PATH="/path/to/output/results"
+
+python batch_infer.py \
+    --image_sub_path "${IMAGE_SUB_PATH}" \
+    --result_save_path "${RESULT_SAVE_PATH}" \
+    --use_async \
+    --override \
+        model_path="StarDoc-AI/NaviDC-OCR" \
+        BACKEND="vllm-async-engine" \
+        LAYOUT_MODE="Detection"
+```
+Main Configuration Parameters
+
+| Parameter                  | Supported Values                    | Description                                                  |
+| -------------------------- | ----------------------------------- | ------------------------------------------------------------ |
+| `BACKEND`                  | `vllm-engine` / `vllm-async-engine` | Inference backend                                            |
+| `LAYOUT_MODE`              | `Detection` / `Segmentation`        | Layout processing mode                                       |
+| `MAX_MODEL_LEN`            | Integer                             | Maximum sequence length for vLLM                             |
+| `GPU_MEMORY_UTILIZATION`   | Float                               | GPU memory utilization ratio                                 |
+| `PDF_TOOLS`                | `PyMuPDF` / `pypdfium2`             | PDF processing backend                                       |
+| `PDF_TOOLS_WORKER_MAX_NUM` | Integer                             | Maximum number of PDF processing workers                     |
+| `PDF_TOOLS_WORKER_RATIO`   | Float                               | Resource ratio allocated to PDF processing workers           |
+| `MAX_PIXELS`               | Integer                             | Maximum number of pixels allowed for each processed PDF page |
+
+---
+
+# 📊 Experimental Results
+
+NaviDC-OCR is evaluated on **OmniDocBench v1.6**, **Wild-OmniDocBench**, **PureDocBench**, and the **ICDAR 2026 Sci-ImageMiner Challenge**.
+
+> **Bold** indicates the best result, while <u>underline</u> indicates the second-best result.
+
+---
+
+## OmniDocBench v1.6
+
+[OmniDocBench](https://github.com/opendatalab/OmniDocBench)
+
+| Model Type           | Method            |   Params |    Overall ↑ |  Text Edit ↓ | Formula CDM ↑ | Table TEDS ↑ | Table TEDS-S ↑ | Read Order Edit ↓ |
+| -------------------- | ----------------- | -------: | -----------: | -----------: | ------------: | -----------: | -------------: | ----------------: |
+| **Specialized VLMs** | **NaviDC-OCR**    | **1.2B** |    **96.87** |    **0.027** |         96.36 |    **97.05** |      **98.52** |      <u>0.122</u> |
+|                      | OvisOCR2          |     0.8B | <u>96.58</u> | <u>0.033</u> |     **97.53** | <u>94.76</u> |   <u>97.16</u> |         **0.111** |
+|                      | PaddleOCR-VL-1.6  |     0.9B |        96.33 |        0.033 |  <u>97.49</u> | <u>94.76</u> |          97.11 |             0.127 |
+|                      | MinerU2.5-Pro     |     1.2B |        95.75 |        0.036 |         97.45 |        93.42 |          95.92 |             0.120 |
+|                      | GLM-OCR           |     0.9B |        95.22 |        0.044 |         97.18 |        92.83 |          95.39 |             0.133 |
+|                      | PaddleOCR-VL-1.5  |     0.9B |        94.87 |        0.038 |         96.69 |        91.67 |          94.37 |             0.130 |
+|                      | HunyuanOCR-1.5    |       1B |        94.74 |        0.033 |         97.49 |        94.76 |          97.11 |             0.127 |
+|                      | PaddleOCR-VL      |     0.9B |        94.11 |        0.040 |         95.70 |        90.65 |          93.74 |             0.135 |
+|                      | Youtu-Parsing     |     2.5B |        93.68 |        0.044 |         93.45 |        92.02 |          95.00 |             0.116 |
+|                      | Logics-Parsing-v2 |       4B |        93.27 |        0.041 |         95.47 |        88.42 |          91.98 |             0.137 |
+|                      | FireRed-OCR       |       2B |        93.20 |        0.037 |         95.27 |        88.04 |          91.06 |             0.131 |
+|                      | MinerU2.5         |     1.2B |        92.98 |        0.045 |         95.59 |        87.88 |          91.47 |             0.130 |
+|                      | OpenDoc-0.1B      |     0.1B |        90.64 |        0.049 |         92.93 |        83.88 |          87.45 |             0.140 |
+|                      | dots.ocr          |       3B |        90.50 |        0.048 |         89.12 |        87.18 |          90.58 |             0.138 |
+|                      | DeepSeek-OCR 2    |       3B |        90.17 |        0.050 |         91.59 |        83.89 |          87.75 |             0.144 |
+|                      | HunyuanOCR        |       1B |        89.87 |        0.089 |         87.44 |        91.01 |          93.23 |             0.171 |
+|                      | Dolphin-v2        |       3B |        89.34 |        0.069 |         90.53 |        84.40 |          87.44 |             0.150 |
+|                      | OCRVerse          |       4B |        88.44 |        0.063 |         89.14 |        82.44 |          86.27 |             0.163 |
+|                      | MonkeyOCR-pro-3B  |       3B |        88.43 |        0.074 |         88.33 |        84.35 |          88.62 |             0.189 |
+| **General VLMs**     | Ovis2.6-30B-A3B   |      30B |        93.62 |        0.035 |         94.93 |        89.44 |          92.40 |             0.135 |
+|                      | Gemini 3 Pro      |       -- |        92.85 |        0.064 |         95.83 |        89.15 |          92.96 |             0.165 |
+|                      | Gemini 3 Flash    |       -- |        92.58 |        0.066 |         95.03 |        89.29 |          93.51 |             0.173 |
+|                      | Qwen3-VL-235B     |     235B |        89.78 |        0.063 |         92.53 |        83.07 |          86.75 |             0.166 |
+|                      | GPT-5.2           |       -- |        86.52 |        0.114 |         88.00 |        82.95 |          87.93 |             0.193 |
+|                      | InternVL3.5-241B  |     241B |        83.61 |        0.130 |         89.52 |        74.35 |          79.78 |             0.215 |
+
+---
+
+## Wild-OmniDocBench
+
+[Wild-OmniDocBench](https://github.com/VirtualLUOUCAS/Wild_OmniDocBench)
+
+| Model Type          | Method            |   Params |    Overall ↑ | Text Edit ↓ | Formula CDM ↑ | Table TEDS ↑ | Table TEDS-S ↑ | Read Order Edit ↓ |
+| ------------------- | ----------------- | -------: | -----------: | ----------: | ------------: | -----------: | -------------: | ----------------: |
+| **Decoupled VLMs**  | **NaviDC-OCR**    | **1.2B** |    **88.53** |  **0.1173** |         88.26 |    **89.05** |      **92.14** |        **0.2011** |
+|                     | PaddleOCR-VL-1.6  |     0.9B |        87.36 |      0.1369 |         88.42 | <u>85.76</u> |   <u>90.14</u> |            0.2057 |
+|                     | MinerU2.5-Pro     |     1.2B |        87.33 |      0.1362 |  <u>90.15</u> |        85.46 |          90.12 |     <u>0.2013</u> |
+|                     | GLM-OCR           |     0.9B |        85.08 |      0.1514 |         89.09 |        81.31 |          85.90 |            0.2228 |
+|                     | PaddleOCR-VL-1.5  |     0.9B |        84.64 |      0.1461 |         86.72 |        81.80 |          86.52 |            0.2138 |
+| **End-to-End VLMs** | OvisOCR2          |     0.8B | <u>87.91</u> |       0.129 |     **90.37** |        85.13 |          89.11 |            0.2021 |
+|                     | dots.ocr          |       3B |        81.84 |      0.1483 |         85.00 |        75.32 |          80.20 |            0.2200 |
+|                     | HunyuanOCR-1.5    |       1B |        77.62 |      0.1979 |         85.12 |        67.54 |          70.67 |            0.2750 |
+|                     | Logics-Parsing-v2 |       4B |        77.10 |      0.4029 |         91.40 |        80.19 |          87.16 |            0.2355 |
+
+---
+
+## PureDocBench
+
+[PureDocBench](https://github.com/zhihengli-casia/puredocbench/)
+
 | Model Type         | Model             | Clean Overall ↑ | Clean Text ↓ | Clean Formula ↑ | Clean Table ↑ | Digital Degraded Overall ↑ | Digital Degraded Text ↓ | Digital Degraded Formula ↑ | Digital Degraded Table ↑ | Real Degraded Overall ↑ | Real Degraded Text ↓ | Real Degraded Formula ↑ | Real Degraded Table ↑ |
 | ------------------ | ----------------- | --------------: | -----------: | --------------: | ------------: | -------------------------: | ----------------------: | -------------------------: | -----------------------: | ----------------------: | -------------------: | ----------------------: | --------------------: |
 | **Decoupled VLM**  | **NaviDC-OCR**    |       **86.90** |    **0.111** |       **81.01** |     **91.09** |               <u>77.47</u> |                   0.206 |                  **72.59** |                    80.45 |               **70.85** |         <u>0.302</u> |               **65.11** |             **77.66** |
@@ -147,10 +239,13 @@ NaviDC-OCR is trained in four stages.
 |                    | Gemini-3.1-Pro    |           70.04 |        0.306 |           65.63 |         75.08 |                      69.28 |                   0.322 |                      65.81 |                    74.24 |               **71.98** |                0.300 |                   68.62 |                 77.26 |
 |                    | Qwen3.5-397B-A17B |           69.12 |        0.233 |           65.26 |         65.40 |                      68.34 |                   0.244 |                      63.91 |                    65.53 |                   62.70 |                0.287 |                   60.70 |                 56.12 |
 
+---
 
+## ICDAR 2026 Sci-ImageMiner Challenge
 
-## [ICDAR2026 Sci-ImageMiner](https://sites.google.com/view/sci-imageminer/)
-|     # | Team            |       RMS |      TEDS |  Weighted |
+[Challenge Website](https://sites.google.com/view/sci-imageminer/)
+
+|  Rank | Team            |       RMS |      TEDS |  Weighted |
 | ----: | --------------- | --------: | --------: | --------: |
 | **1** | **NaviDC-OCR**  | **17.23** | **66.39** | **41.81** |
 |     2 | VLMinators      |     17.29 |     64.31 |     40.80 |
@@ -160,43 +255,43 @@ NaviDC-OCR is trained in four stages.
 |     6 | Qwen3 VL 8B     |     14.08 |     57.86 |     35.97 |
 
 
-
-
 ---
 
-# Citation
+# 📝 Citation
+
+If you find NaviDC-OCR useful in your research, please consider citing:
 
 ```bibtex
-@article{NaviDC_OCR,
+@article{navidc_ocr,
   title={NaviDC-OCR: Navigating Document Parsing Across Digital and Camera-Captured Documents},
-  author={...},
+  author={Cai, Peng and Zou, Zhaofan and Liu, Shifa and Wang, Yikun and Tang, Jiawei and Yang, Kaicheng and Tong, Meng and He, Zhongjiang and Sun, Hao},
+  journal={arXiv preprint arXiv:2608.12898},
   year={2026}
 }
 ```
 
 ---
 
-# License
+# 🙏 Acknowledgements
 
-Apache-2.0
+NaviDC-OCR is built upon the following excellent open-source projects:
 
----
+* [MinerU](https://github.com/opendatalab/MinerU)
+* [Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL)
+* [Qwen3](https://github.com/QwenLM/Qwen3)
+* [Transformers](https://github.com/huggingface/transformers)
+* [PyTorch](https://github.com/pytorch/pytorch)
+* [FlashAttention](https://github.com/Dao-AILab/flash-attention)
 
-# Acknowledgements
-
-NaviDC-OCR is built upon
-
-- MinerU
-- Qwen2.5-VL
-- Qwen3
-- Transformers
-- PyTorch
-- FlashAttention
-
-We sincerely thank these excellent open-source projects.
+We sincerely thank the authors and contributors of these projects for their valuable contributions to the open-source community.
 
 ---
 
-# Contact
+# 📮 Contact
 
-If you have any questions, feel free to open an issue or contact us.
+If you have any questions, suggestions, or issues, please feel free to:
+
+* Open an issue in this repository
+* Contact the NaviDC-OCR authors
+
+

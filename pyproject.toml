@@ -1,0 +1,100 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NaviOCR"
+version = "0.1.0"
+description = "NAVIDC-OCR inference package with Transformers and vLLM plugin support."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+
+dependencies = [
+    # basic
+    "pillow>=11,<12",
+    "numpy>=2.2,<2.3",
+    "opencv-python-headless>=4.12,<5",
+    "pypdfium2>=4.30,<5",
+    "pymupdf>=1.26,<2",
+    "pypdf>=6,<7",
+    "reportlab>=4.4,<5",
+    "loguru>=0.7,<1",
+    "tqdm>=4.67,<5",
+
+    # network/server
+    "requests>=2.32,<3",
+    "aiofiles>=24,<25",
+    "aiohttp>=3.13,<4",
+    "httpx>=0.28,<1",
+    "httpx-retries>=0.4,<1",
+
+    # api
+    "fastapi>=0.128,<1",
+    "uvicorn>=0.40,<1",
+    "pydantic>=2.13,<3",
+    "python-multipart>=0.0.21,<1",
+
+    # utils
+    "beautifulsoup4>=4.14,<5",
+    "fast-langdetect>=0.2,<0.3",
+    "magika>=1.0,<2",
+    "pyclipper>=1.4,<2",
+    "shapely>=2.1,<3",
+    "json-repair>=0.55,<1",
+    "boto3>=1.42,<2",
+    "botocore>=1.42,<2",
+
+    # Transformers inference
+    "torch>=2.8,<2.9",
+    "torchvision>=0.23,<0.24",
+    "transformers>=4.57,<4.58",
+    "tokenizers>=0.22,<0.23",
+    "accelerate>=1.12,<2",
+    "safetensors>=0.7,<0.8",
+    "qwen-vl-utils>=0.0.14,<0.1",
+
+    # vLLM server
+    "vllm>=0.11,<0.12",
+    "xformers>=0.0.32,<0.0.33",
+]
+
+
+[project.optional-dependencies]
+
+server = [
+    "gradio>=5.49,<6",
+]
+
+dev = [
+    "ruff>=0.14,<1",
+]
+
+all = [
+    "NaviOCR[server]",
+]
+
+
+[project.entry-points."vllm.general_plugins"]
+NaviOCR_vllm = "NaviOCR_vllm:register"
+
+
+[tool.setuptools]
+include-package-data = true
+
+
+[tool.setuptools.packages.find]
+where = [".", "NaviOCR-vllm"]
+include = [
+    "NaviOCR*",
+    "NaviOCR_vllm*",
+]
+
+
+[tool.setuptools.package-data]
+"*" = [
+    "*.json",
+    "*.jinja",
+    "*.txt",
+    "*.yaml",
+    "*.yml",
+]
