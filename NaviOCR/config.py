@@ -2,7 +2,7 @@
 # Model
 # =========================
 
-model_path = "/gemini/space/cp/NAVIOCR/NaviDC-OCR-private/model_weight/1B/V1"
+model_path = "StarDoc-AI/NaviDC-OCR"
 
 BACKEND = "vllm-async-engine"
 # [vllm-engine, vllm-async-engine]
