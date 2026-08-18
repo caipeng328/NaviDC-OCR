@@ -46,7 +46,7 @@ DEFAULT_PROMPTS: dict[str, str] = {
     "table":"\nThis is the image of a table. Please output the table in OTSL format.",
     "formula":"\nPlease write out the expression of the formula in the image using LaTeX format.",
     "code":"\nThe image contains a code snippet, please output the parsing result.",
-    "layout":LAYOUT_PROMPTS[CONFIG.LAYOUT_MODE],
+    "layout":"\nAnalyze the image layout.",
     "seal":"\nSeal Recognition:",
     "char":"\nThis is a scientific figure. Please extract the table implied by this figure.",
     "default":"\nPlease output the text content from the image.",
@@ -104,13 +104,6 @@ def _convert_bbox(bbox: Sequence[int] | Sequence[str] | str, keep_four_numbers: 
             min(999, max(ys) + padding_px),
         ]
     else:
-        # padding_bbox = []
-        # for x, y in zip(xs, ys):
-        #     padding_bbox.extend([
-        #         min(999, max(0, x + (-padding_px if x == min(xs) else padding_px if x == max(xs) else x) - x + x)),
-        #         min(999, max(0, y + (-padding_px if y == min(ys) else padding_px if y == max(ys) else y) - y + y)),
-        #     ])
-
         padding_bbox = []
         xmin, xmax = min(xs), max(xs)
         ymin, ymax = min(ys), max(ys)
@@ -516,7 +509,7 @@ class NaviOCRClient:
         priority: int | None = None,
     ) -> list[ContentBlock]:
         layout_image = self.helper.prepare_for_layout(image)
-        prompt = self.prompts.get("layout") or self.prompts["default"]
+        prompt = LAYOUT_PROMPTS.get(CONFIG.LAYOUT_MODE) or self.prompts["layout"]
         params = self.sampling_params.get("layout") or self.sampling_params.get("default")
         output = self.client.predict(layout_image, prompt, params, priority)
         return self.helper.parse_layout_output(output)
@@ -540,7 +533,7 @@ class NaviOCRClient:
         if priority is None and self.incremental_priority:
             priority = list(range(len(images)))
         layout_images = self.helper.batch_prepare_for_layout(self.executor, images)
-        prompt = self.prompts.get("layout") or self.prompts["default"]
+        prompt = LAYOUT_PROMPTS.get(CONFIG.LAYOUT_MODE) or self.prompts["layout"]
         params = self.sampling_params.get("layout") or self.sampling_params.get("default")
         outputs = self.client.batch_predict(layout_images, prompt, params, priority)
         return self.helper.batch_parse_layout_output(self.executor, outputs)
@@ -557,7 +550,7 @@ class NaviOCRClient:
         # print(f'aio_prepare_for_layout is {time.time() - aio_prepare_for_layout_time}')
         
         # aio_predict_time = time.time()
-        prompt = self.prompts.get("layout") or self.prompts["default"]
+        prompt = LAYOUT_PROMPTS.get(CONFIG.LAYOUT_MODE) or self.prompts["layout"]
         params = self.sampling_params.get("layout") or self.sampling_params.get("default")
         if semaphore is None:
             output = await self.client.aio_predict(layout_image, prompt, params, priority)
@@ -585,7 +578,7 @@ class NaviOCRClient:
             use_tqdm=self.use_tqdm,
             tqdm_desc="Layout Preparation",
         )
-        prompt = self.prompts.get("layout") or self.prompts["default"]
+        prompt = LAYOUT_PROMPTS.get(CONFIG.LAYOUT_MODE) or self.prompts["layout"]
         params = self.sampling_params.get("layout") or self.sampling_params.get("default")
         outputs = await self.client.aio_batch_predict(
             layout_images,
