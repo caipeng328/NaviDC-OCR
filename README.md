@@ -5,7 +5,6 @@
 **NaviDC-OCR: Navigating Document Parsing Across Digital and Camera-Captured Documents**
 
 [![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
-[![Technical Report](https://img.shields.io/badge/Technical%20Report-arXiv-red.svg)](https://arxiv.org/pdf/2608.12898)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Model-orange.svg)](https://huggingface.co/StarDoc-AI/NaviDC-OCR)
 
 **A lightweight Vision-Language Model for unified document parsing across digital and camera-captured documents.**
