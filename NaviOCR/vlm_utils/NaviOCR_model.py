@@ -78,8 +78,8 @@ class NaviOCRMODEL:
                 if "model" not in kwargs:
                     kwargs["model"] = model_path
                 if "logits_processors" not in kwargs:
-                    from . import LogitsProcessor
-                    kwargs["logits_processors"] = [LogitsProcessor]
+                    from . import NaviOCRLogitsProcessor
+                    kwargs["logits_processors"] = [NaviOCRLogitsProcessor]
                 if 'max_model_len' not in kwargs:
                     kwargs["max_model_len"] = CONFIG.MAX_MODEL_LEN
                 vllm_llm = vllm.LLM(**kwargs)
