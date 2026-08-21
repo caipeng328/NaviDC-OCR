@@ -38,7 +38,7 @@ These techniques enable NaviDC-OCR to achieve strong performance across both dig
 
 <div align="center">
 
-<img src="assets/score.png" width="85%" alt="NaviDC-OCR benchmark results">
+<img src="assets/score.png" width="80%" alt="NaviDC-OCR benchmark results">
 
 </div>
 
@@ -48,7 +48,7 @@ These techniques enable NaviDC-OCR to achieve strong performance across both dig
 
 <div align="center">
 
-<img src="assets/data_engine.png" width="85%" alt="NaviDC-OCR data engine">
+<img src="assets/data_engine.png" width="80%" alt="NaviDC-OCR data engine">
 
 </div>
 
@@ -69,7 +69,7 @@ Most of the generated training data requires **no manual annotation**.
 
 <div align="center">
 
-<img src="assets/model.png" width="85%" alt="NaviDC-OCR training pipeline">
+<img src="assets/model.png" width="80%" alt="NaviDC-OCR training pipeline">
 
 </div>
 
@@ -83,74 +83,6 @@ NaviDC-OCR is trained through a progressive four-stage training pipeline:
 | **Stage 4** | Reinforcement Learning |
 
 This progressive strategy gradually improves the model from basic vision-language alignment to fine-grained document understanding and structured output generation.
-
----
-
-# 🚀 Installation & Usage
-
-## 1. Environment Installation
-
-NaviDC-OCR requires **Python 3.10+** and a CUDA-enabled environment for GPU inference.
-
-```bash
-git clone https://github.com/caipeng328/NaviDC-OCR.git
-cd NaviDC-OCR
-conda create -n navidc-ocr python=3.10 -y
-conda activate navidc-ocr
-```
-
-### Install Dependencies
-
-Install NaviDC-OCR and its dependencies in editable mode:
-
-```bash
-pip install -e .
-```
-
-The `-e` option installs the project in **editable mode**, allowing modifications to the source code to take effect immediately without reinstalling the package.
-
----
-
-## 2. Inference
-
-NaviDC-OCR provides `infer.py` for batch inference on document images.
-
-Before running inference, configure:
-
-* Input image directory
-* Output directory
-* Model path
-
-A typical inference command is:
-
-```bash
-#!/bin/bash
-set -e
-
-IMAGE_SUB_PATH="/path/to/input/images"
-RESULT_SAVE_PATH="/path/to/output/results"
-
-python batch_infer.py \
-    --image_sub_path "${IMAGE_SUB_PATH}" \
-    --result_save_path "${RESULT_SAVE_PATH}" \
-    --use_async \
-    --override \
-        model_path="StarDoc-AI/NaviDC-OCR" \
-        BACKEND="vllm-async-engine" \
-        LAYOUT_MODE="Detection"
-```
-Main Configuration Parameters
-
-| Parameter                  | Supported Values                    | Description                                                  |
-| -------------------------- | ----------------------------------- | ------------------------------------------------------------ |
-| `BACKEND`                  | `vllm-engine` / `vllm-async-engine` | Inference backend                                            |
-| `LAYOUT_MODE`              | `Detection` / `Segmentation`        | Layout processing mode                                       |
-| `MAX_MODEL_LEN`            | Integer                             | Maximum sequence length for vLLM                             |
-| `GPU_MEMORY_UTILIZATION`   | Float                               | GPU memory utilization ratio                                 |
-| `PDF_TOOLS`                | `PyMuPDF` / `pypdfium2`             | PDF processing backend                                       |
-| `PDF_TOOLS_WORKER_MAX_NUM` | Integer                             | Maximum number of PDF processing workers                     |
-| `PDF_TOOLS_WORKER_RATIO`   | Float                               | Resource ratio allocated to PDF processing workers           |
-| `MAX_PIXELS`               | Integer                             | Maximum number of pixels allowed for each processed PDF page |
 
 ---
 
@@ -258,9 +190,78 @@ NaviDC-OCR is evaluated on **OmniDocBench v1.6**, **Wild-OmniDocBench**, **PureD
 To evaluate the model's ability to understand complex document deformations, we conduct a visual evaluation on the public dewarping datasets DocUNet and DIR300, with representative results shown in Figure. NaviDC-OCR directly performs layout and content parsing on distorted documents without dewarping preprocessing or a dedicated rectification model, demonstrating robust parsing under complex geometric deformations.
 <div align="center">
 
-<img src="assets/dir300.png" width="85%" alt="Parsing evaluation on the DIR300 dataset.">
-<img src="assets/docunet.png" width="85%" alt="Parsing evaluation on the DocUNet dataset.">
+<img src="assets/dir300.png" width="80%" alt="Parsing evaluation on the DIR300 dataset.">
+<img src="assets/docunet.png" width="80%" alt="Parsing evaluation on the DocUNet dataset.">
 </div>
+
+---
+
+# 🚀 Installation & Usage
+
+## 1. Environment Installation
+
+NaviDC-OCR requires **Python 3.10+** and a CUDA-enabled environment for GPU inference.
+
+```bash
+git clone https://github.com/caipeng328/NaviDC-OCR.git
+cd NaviDC-OCR
+conda create -n navidc-ocr python=3.10 -y
+conda activate navidc-ocr
+```
+
+### Install Dependencies
+
+Install NaviDC-OCR and its dependencies in editable mode:
+
+```bash
+pip install -e .
+```
+
+The `-e` option installs the project in **editable mode**, allowing modifications to the source code to take effect immediately without reinstalling the package.
+
+---
+
+## 2. Inference
+
+NaviDC-OCR provides `infer.py` for batch inference on document images.
+
+Before running inference, configure:
+
+* Input image directory
+* Output directory
+* Model path
+
+A typical inference command is:
+
+```bash
+#!/bin/bash
+set -e
+
+IMAGE_SUB_PATH="/path/to/input/images"
+RESULT_SAVE_PATH="/path/to/output/results"
+
+python batch_infer.py \
+    --image_sub_path "${IMAGE_SUB_PATH}" \
+    --result_save_path "${RESULT_SAVE_PATH}" \
+    --use_async \
+    --override \
+        model_path="StarDoc-AI/NaviDC-OCR" \
+        BACKEND="vllm-async-engine" \
+        LAYOUT_MODE="Detection"
+```
+Main Configuration Parameters
+
+| Parameter                  | Supported Values                    | Description                                                  |
+| -------------------------- | ----------------------------------- | ------------------------------------------------------------ |
+| `BACKEND`                  | `vllm-engine` / `vllm-async-engine` | Inference backend                                            |
+| `LAYOUT_MODE`              | `Detection` / `Segmentation`        | Layout processing mode                                       |
+| `MAX_MODEL_LEN`            | Integer                             | Maximum sequence length for vLLM                             |
+| `GPU_MEMORY_UTILIZATION`   | Float                               | GPU memory utilization ratio                                 |
+| `PDF_TOOLS`                | `PyMuPDF` / `pypdfium2`             | PDF processing backend                                       |
+| `PDF_TOOLS_WORKER_MAX_NUM` | Integer                             | Maximum number of PDF processing workers                     |
+| `PDF_TOOLS_WORKER_RATIO`   | Float                               | Resource ratio allocated to PDF processing workers           |
+| `MAX_PIXELS`               | Integer                             | Maximum number of pixels allowed for each processed PDF page |
+
 
 ---
 
