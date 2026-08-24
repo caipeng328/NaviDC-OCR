@@ -38,7 +38,7 @@ These techniques enable NaviDC-OCR to achieve strong performance across both dig
 
 <div align="center">
 
-<img src="assets/score.png" width="80%" alt="NaviDC-OCR benchmark results">
+<img src="assets/score.png" width="800" alt="NaviDC-OCR benchmark results">
 
 </div>
 
@@ -48,7 +48,7 @@ These techniques enable NaviDC-OCR to achieve strong performance across both dig
 
 <div align="center">
 
-<img src="assets/data_engine.png" width="80%" alt="NaviDC-OCR data engine">
+<img src="assets/data_engine.png" width="600" alt="NaviDC-OCR data engine">
 
 </div>
 
@@ -69,7 +69,7 @@ Most of the generated training data requires **no manual annotation**.
 
 <div align="center">
 
-<img src="assets/model.png" width="80%" alt="NaviDC-OCR training pipeline">
+<img src="assets/model.png" width="600" alt="NaviDC-OCR training pipeline">
 
 </div>
 
@@ -98,8 +98,8 @@ NaviDC-OCR is evaluated on **OmniDocBench v1.6**, **Wild-OmniDocBench**, **PureD
 To evaluate the model's ability to understand complex document deformations, we conduct a visual evaluation on the public dewarping datasets DocUNet and DIR300, with representative results shown in Figure. NaviDC-OCR directly performs layout and content parsing on distorted documents without dewarping preprocessing or a dedicated rectification model, demonstrating robust parsing under complex geometric deformations.
 <div align="center">
 
-<img src="assets/dir300.png" width="80%" alt="Parsing evaluation on the DIR300 dataset.">
-<img src="assets/docunet.png" width="80%" alt="Parsing evaluation on the DocUNet dataset.">
+<img src="assets/dir300.png" width="600" alt="Parsing evaluation on the DIR300 dataset.">
+<img src="assets/docunet.png" width="600" alt="Parsing evaluation on the DocUNet dataset.">
 </div>
 
 ---
