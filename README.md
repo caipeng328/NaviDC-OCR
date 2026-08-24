@@ -38,7 +38,7 @@ These techniques enable NaviDC-OCR to achieve strong performance across both dig
 
 <div align="center">
 
-<img src="assets/score.png" width="800" alt="NaviDC-OCR benchmark results">
+<img src="assets/score.png" width="600" alt="NaviDC-OCR benchmark results">
 
 </div>
 
