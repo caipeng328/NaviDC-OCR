@@ -91,6 +91,16 @@ This progressive strategy gradually improves the model from basic vision-languag
 NaviDC-OCR is evaluated on **OmniDocBench v1.6**, **Wild-OmniDocBench**, **PureDocBench**, and the **ICDAR 2026 Sci-ImageMiner Challenge**.
 
 > **Bold** indicates the best result, while <u>underline</u> indicates the second-best result.
+>
+
+---
+## Layout Visualization of Distorted Documents
+To evaluate the model's ability to understand complex document deformations, we conduct a visual evaluation on the public dewarping datasets DocUNet and DIR300, with representative results shown in Figure. NaviDC-OCR directly performs layout and content parsing on distorted documents without dewarping preprocessing or a dedicated rectification model, demonstrating robust parsing under complex geometric deformations.
+<div align="center">
+
+<img src="assets/dir300.png" width="80%" alt="Parsing evaluation on the DIR300 dataset.">
+<img src="assets/docunet.png" width="80%" alt="Parsing evaluation on the DocUNet dataset.">
+</div>
 
 ---
 
@@ -184,15 +194,6 @@ NaviDC-OCR is evaluated on **OmniDocBench v1.6**, **Wild-OmniDocBench**, **PureD
 |     4 | Vassilis Sioros |     14.94 |     55.20 |     35.07 |
 |     5 | DocMiner        |     12.67 |     53.72 |     33.19 |
 |     6 | Qwen3 VL 8B     |     14.08 |     57.86 |     35.97 |
-
----
-## Layout Visualization of Distorted Documents
-To evaluate the model's ability to understand complex document deformations, we conduct a visual evaluation on the public dewarping datasets DocUNet and DIR300, with representative results shown in Figure. NaviDC-OCR directly performs layout and content parsing on distorted documents without dewarping preprocessing or a dedicated rectification model, demonstrating robust parsing under complex geometric deformations.
-<div align="center">
-
-<img src="assets/dir300.png" width="80%" alt="Parsing evaluation on the DIR300 dataset.">
-<img src="assets/docunet.png" width="80%" alt="Parsing evaluation on the DocUNet dataset.">
-</div>
 
 ---
 
