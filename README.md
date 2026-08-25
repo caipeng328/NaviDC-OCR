@@ -241,7 +241,7 @@ set -e
 IMAGE_SUB_PATH="/path/to/input/images"
 RESULT_SAVE_PATH="/path/to/output/results"
 
-python batch_infer.py \
+python infer.py \
     --image_sub_path "${IMAGE_SUB_PATH}" \
     --result_save_path "${RESULT_SAVE_PATH}" \
     --use_async \
