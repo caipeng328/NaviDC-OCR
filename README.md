@@ -91,9 +91,7 @@ This progressive strategy gradually improves the model from basic vision-languag
 NaviDC-OCR is evaluated on **OmniDocBench v1.6**, **Wild-OmniDocBench**, **PureDocBench**, and the **ICDAR 2026 Sci-ImageMiner Challenge**.
 
 > **Bold** indicates the best result, while <u>underline</u> indicates the second-best result.
->
-
-It should be noted that all metrics reported in this report were evaluated using the Docker image provided by OmniDocBench v1.6. For Wild-OmniDocBench, we used the Docker image provided by OmniDocBench v1.6 for evaluation, with the metrics obtained by inspecting the Sub-v1.5 results. PureDocBench was also evaluated using the Docker image provided by OmniDocBench v1.6; however, the ground-truth JSON files were converted from the files provided by PureDocBench. In addition, for the real-world degraded tracks in Wild-OmniDocBench and PureDocBench, we recommend enabling LAYOUT_MODE="Segmentation".
+> It should be noted that all metrics reported in this report were evaluated using the Docker image provided by OmniDocBench v1.6. For Wild-OmniDocBench, we used the Docker image provided by OmniDocBench v1.6 for evaluation, with the metrics obtained by inspecting the Sub-v1.5 results. PureDocBench was also evaluated using the Docker image provided by OmniDocBench v1.6; however, the ground-truth JSON files were converted from the files provided by PureDocBench. In addition, for the real-world degraded tracks in Wild-OmniDocBench and PureDocBench, we recommend enabling LAYOUT_MODE="Segmentation".
 
 ---
 ## Layout Visualization of Distorted Documents
