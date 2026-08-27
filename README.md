@@ -93,6 +93,8 @@ NaviDC-OCR is evaluated on **OmniDocBench v1.6**, **Wild-OmniDocBench**, **PureD
 > **Bold** indicates the best result, while <u>underline</u> indicates the second-best result.
 >
 
+It should be noted that all metrics reported in this report were evaluated using the Docker image provided by OmniDocBench v1.6. For Wild-OmniDocBench, we used the Docker image provided by OmniDocBench v1.6 for evaluation, with the metrics obtained by inspecting the Sub-v1.5 results. PureDocBench was also evaluated using the Docker image provided by OmniDocBench v1.6; however, the ground-truth JSON files were converted from the files provided by PureDocBench. In addition, for the real-world degraded tracks in Wild-OmniDocBench and PureDocBench, we recommend enabling LAYOUT_MODE="Segmentation".
+
 ---
 ## Layout Visualization of Distorted Documents
 To evaluate the model's ability to understand complex document deformations, we conduct a visual evaluation on the public dewarping datasets DocUNet and DIR300, with representative results shown in Figure. NaviDC-OCR directly performs layout and content parsing on distorted documents without dewarping preprocessing or a dedicated rectification model, demonstrating robust parsing under complex geometric deformations.
