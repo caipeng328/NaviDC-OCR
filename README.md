@@ -6,6 +6,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Model-orange.svg)](https://huggingface.co/StarDoc-AI/NaviDC-OCR)
+[![Papers with Code: SOTA on OmniDocBench v1.6](https://paperswithcode.co/api/v1/papers/2608.12898/leaderboard-badge.svg?eval=25856&live=1)](https://paperswithcode.co/api/v1/papers/2608.12898/leaderboard-badge-link?eval=25856)
 
 **A lightweight Vision-Language Model for unified document parsing across digital and camera-captured documents.**
 
