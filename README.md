@@ -18,7 +18,7 @@
 
 
 - **2026/08/29** — Thanks to Nandraj for the GGUF conversion and llama.cpp support!  [🔗 NaviDC-OCR-GGUF](https://huggingface.co/nandraj/NaviDC-OCR-GGUF)
-- **2026/08/17** — NaviDC-OCR [model weights](https://huggingface.co/StarDoc-AI/NaviDC-OCR) and technical report have been released.
+- **2026/08/17** — NaviDC-OCR [model weights](https://huggingface.co/StarDoc-AI/NaviDC-OCR) and [technical report](https://arxiv.org/pdf/2608.12898) have been released.
 
 ---
 
