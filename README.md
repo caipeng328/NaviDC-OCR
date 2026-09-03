@@ -114,15 +114,9 @@ To evaluate the model's ability to understand complex document deformations, we 
 |**Specialized VLMs**| | | | | |
 |Navidc‑OCR|67.96|0.1903|0.02|64.97|0.398|
 |Mineru 2.5 pro|62.26|0.3402|0.04|67.75|0.356|
-|Mineru 2.5|54.37|0.33|24.15|55.85|0.30|
 |PaddleOCRvl 1.6|55.11 | 0.4364 | 0.21 | 51.34 |0.412 |
-|PaddleOCRvl 1.5|34.78|0.73|30.73|51.79|0.71|
-|**General VLMs**| | | | | |
-|Qwen3.5‑Flash|57.51|0.26|35.69|46.24|0.26|
-|Qwen3.5‑122B‑A10B|56.32|0.23|32.54|38.31|0.23|
-|Kimi‑K2.5|60.38|0.19|27.04|51.98|0.18|
-|Doubao‑Seed‑1.6‑Vision|53.14|0.34|41.28|3.93|0.28|
-|GPT‑5.5|61.94|0.19|34.55|48.90|0.17|
+
+
 
 ---
 
