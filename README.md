@@ -114,6 +114,7 @@ To evaluate the model's ability to understand complex document deformations, we 
 |**Specialized VLMs**| | | | | |
 |Navidc‑OCR|67.96|0.1903|0.02|64.97|0.398|
 |Mineru 2.5 pro|62.26|0.3402|0.04|67.75|0.356|
+|OvisOCR2|59.25|0.3883|0.00|61.59|0.3791|
 |PaddleOCRvl 1.6|55.11 | 0.4364 | 0.21 | 51.34 |0.412 |
 
 
