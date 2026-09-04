@@ -17,7 +17,7 @@
 ## 🔥 News
 
 - **2026/09/01** - We noticed that EMNLP 2026 is hosting the [Dr.DocBench Challenge](https://eval.ai/web/challenges/challenge-page/2717/overview), a document parsing competition. We evaluated NaviDC-OCR with its native weights, achieving better results than MinerU 2.5 Pro and PaddleOCR-VL 1.6. Detailed results are shown below **dr.docbench-challenge**. We welcome the use of NaviDC‑OCR for competitions. Going forward, we will continue to deliver competitive parsing models for the community.
-- **2026/08/29** — Thanks to Nandraj for the GGUF conversion and llama.cpp support!  [🔗 NaviDC-OCR-GGUF](https://huggingface.co/nandraj/NaviDC-OCR-GGUF)
+- **2026/08/29** — Thanks to Nandraj for the GGUF conversion and llama.cpp support  [🔗 NaviDC-OCR-GGUF](https://huggingface.co/nandraj/NaviDC-OCR-GGUF), and to the community for sharing their experience deploying NaviDC-OCR on [Ascend 910B!](https://zhuanlan.zhihu.com/p/2078516899093155893)
 - **2026/08/17** — NaviDC-OCR [model weights](https://huggingface.co/StarDoc-AI/NaviDC-OCR) and [technical report](https://arxiv.org/pdf/2608.12898) have been released.
 
 ---
